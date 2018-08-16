@@ -4,13 +4,26 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
+    state: {
+        tabsOnMain : location.hash   
+    },
+    mutations: {
 
-  },
-  mutations: {
+        changeHash(state, data){
 
-  },
-  actions: {
+            location.hash = data;
+            state.tabsOnMain = '#' + data;
+            
+        },
 
-  }
+    },
+    actions: {
+
+        changeHashOnMain : (context, hashName ) =>{
+
+            context.commit('changeHash', hashName ); 
+            
+        }
+
+    }
 })

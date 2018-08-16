@@ -2,9 +2,10 @@
     <div id="app">
         <Header />
         
-        <div class="main">
-
-            <router-view/>
+        <div class="main">  
+          	<transition name="fade" mode="out-in">
+            	<router-view class="view"/>
+            </transition>
 
         </div>
 
@@ -23,10 +24,26 @@ export default {
     Header,
     Footer
   }
+
 };
 </script>
 
 <style lang="scss">
+/* eslint-disable */
+.fade-enter {
+  opacity: 0;
+  transform: translate(-20px);
+}
+
+.fade-enter-active {
+	transition: all 0.3s ease;
+}
+.fade-leave-active {
+  	transition: all 0.3s ease;
+   	transform: translate(-20px);
+  	opacity: 0;
+}
+
 /* ==========================================================================
    Normalize.scss settings
    ========================================================================== */

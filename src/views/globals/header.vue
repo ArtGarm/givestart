@@ -2,19 +2,27 @@
     <div class="header">
         <div class="siders">
             <div class="logo-part">
-                <a href="/">
+                <router-link to="/">
                     <img src="../../assets/images/logo.png" alt="">
-                </a>
+                </router-link>
             </div>
             <div class="navigate-part">
                 <nav
                     v-bind:class="{ active : openMenu }"
                 >
                     <ul>
-                        <li><a href="#">ראשי</a></li>
+                        <li>
+							<router-link to="/">
+								ראשי	
+							</router-link>
+						</li>
                         <li><a href="#">קרנות</a></li>
                         <li><a href="#">איך זה עובד</a></li>
-                        <li><a href="#">המלצות</a></li>
+                        <li>
+							<router-link to="/about">
+								המלצות
+							</router-link>
+                        </li>
                     </ul>
                 </nav>
                 <div class="searcher-btn">
@@ -30,9 +38,9 @@
                         </g>
                     </svg>
                 </div>
-                <a href="#" class="add-butt">
+                <router-link to="add_new" class="add-butt"> 
                     <span> פתיחת קרן + </span>
-                </a>
+                </router-link>
                 <div class="hidden-opener"
                     v-bind:class="{ active : openMenu }"
                     @click="openMobileMenu()"
@@ -111,11 +119,11 @@ export default {
       transition: all 0.3s;
       word-wrap: none;
       white-space: nowrap;
-      &.active,
+      &.router-link-exact-active,
       &:hover {
         background-color: #e2dbeb;
       }
-      &.active {
+      &.router-link-exact-active {
         font-weight: 700;
       }
     }
@@ -171,7 +179,7 @@ export default {
       line-height: 1;
       transition: all 0.3s;
     }
-    &:hover {
+    &:hover , &.router-link-exact-active {
       background-color: #5d368f;
       span {
         color: #fff;
@@ -347,7 +355,8 @@ header .logo-part a {
       border-radius: 2px;
       transition: all 0.3s;
     }
-    &:hover {
+    &:hover, 
+	&.router-link-exact-active{
       &:before,
       &:after {
         background-color: #fff;
